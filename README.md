@@ -61,7 +61,7 @@ BKM Express Android SDK paketinin kullanılabilmesi için gerekmektedir. İşyer
 
 
 ###ÖRNEK KULLANIM - SUBMIT CONSUMER (KART EŞLEME)
-                  BEXStarter.startSDKForSubmitConsumer(MainActivity.this, "MERCHANT-TOKEN", getString(R.string.dummyApiKey), new BEXSubmitConsumerListener() {
+                  BEXStarter.startSDKForSubmitConsumer(MainActivity.this, "MERCHANT-TOKEN", "API_KEY", new BEXSubmitConsumerListener() {
 
                                 @Override
                                 public void onSuccess() {
@@ -81,7 +81,7 @@ BKM Express Android SDK paketinin kullanılabilmesi için gerekmektedir. İşyer
 
 
 ###ÖRNEK KULLANIM - PAYMENT (ÖDEME)
-                  BEXStarter.startSDKForPayment(Payment.this, response.body(), API_KEY, new BEXPaymentListener() {
+                  BEXStarter.startSDKForPayment(Payment.this, "MERCHANT-TOKEN", "API_KEY", new BEXPaymentListener() {
                                  
                                  @Override
                                  public void onSuccess() {
