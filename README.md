@@ -2,6 +2,7 @@
 
 ##NE İŞE YARAR?
 > Hizmetinize sunulan BKM Express Android SDK paketi ile son kullanıcının Android cihazında BKMExpress uygulaması kurulu olmasa dahi, "Kart Eşleme ve Ödeme Yapma" özelliklerini uygulamanızdan çıkış yapma gereksinimi olmadan halletmenize olanak sunar.
+
 ##SİSTEM GEREKSİNİMLERİ NELERDİR?
 
  *  BKM Express Android SDK paketi, Android Studio ile geliştirilen uygulamalar baz alınarak tasarlanmıştır.
