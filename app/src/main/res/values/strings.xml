@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BKMExpress SDK_Sample</string>
+    <string name="quick_pay_label">Kart Eşleşme</string>
+    <string name="bkm_token_service_url">http://62.244.244.116:8081</string>
+    <string name="dummyApiKey">abcd1234abcd1234</string>
+    <string name="payment_label">ÖDEME</string>
+    <string name="start_payment">ÖDEMEYİ BAŞLAT</string>
+    <string name="amount_hint">Tutar</string>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ripple android:color="?android:attr/colorControlHighlight"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <!-- As we can't use themed ColorStateLists in L, we'll use a Drawable selector which
+             changes the shape's fill color. -->
+        <selector>
+            <item android:state_enabled="false">
+                <shape android:shape="rectangle">
+                    <stroke
+                        android:width="1dp"
+                        android:color="@color/bex_gray" />
+                    <corners android:radius="2dp" />
+                    <solid android:color="@color/gray" />
+                    <padding android:left="@dimen/abc_button_padding_horizontal_material"
+                        android:top="@dimen/abc_button_padding_vertical_material"
+                        android:right="@dimen/abc_button_padding_horizontal_material"
+                        android:bottom="@dimen/abc_button_padding_vertical_material"/>
+                </shape>
+            </item>
+            <item>
+                <shape android:shape="rectangle">
+                    <stroke
+                        android:width="1dp"
+                        android:color="@color/bex_green" />
+                    <corners android:radius="2dp" />
+                    <solid android:color="@color/white" />
+                    <padding android:left="@dimen/abc_button_padding_horizontal_material"
+                        android:top="@dimen/abc_button_padding_vertical_material"
+                        android:right="@dimen/abc_button_padding_horizontal_material"
+                        android:bottom="@dimen/abc_button_padding_vertical_material"/>
+                </shape>
+            </item>
+        </selector>
+    </item>
+</ripple>
