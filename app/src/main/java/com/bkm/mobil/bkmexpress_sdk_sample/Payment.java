@@ -6,11 +6,11 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Toast;
 
 import com.bkm.bexandroidsdk.core.BEXPaymentListener;
 import com.bkm.bexandroidsdk.core.BEXStarter;
+import com.bkm.bexandroidsdk.n.bexdomain.PosResult;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,8 +46,9 @@ public class Payment extends AppCompatActivity {
                         public void onResponse(Call<String> call, Response<String> response) {
                             BEXStarter.startSDKForPayment(Payment.this, response.body(), API_KEY, new BEXPaymentListener() {
                                 @Override
-                                public void onSuccess() {
-                                    Toast.makeText(Payment.this, "Ödeme Başarılı !!", Toast.LENGTH_SHORT).show();
+                                public void onSuccess(PosResult posResult) {
+                                    Toast.makeText(Payment.this, "Ödeme Başarılı !!\n" +
+                                            "PosMsg :: "+posResult.getPosMessage(), Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
 

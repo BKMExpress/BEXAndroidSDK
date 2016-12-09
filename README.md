@@ -26,16 +26,16 @@ BKM Express Android SDK paketinin kullanılabilmesi için gerekmektedir. İşyer
 
 * Daha sonra yine aynı dosyadaki dependencies kısmına aşağıdaki gradle bağlantılarını ekleyiniz.
 
-                compile 'com.android.support:support-v4:24.1.1' 
-                compile 'com.android.support:appcompat-v7:24.1.1'
+                compile 'com.android.support:support-v4:25.0.1'
+                compile 'com.android.support:appcompat-v7:25.0.1'
  
  * Preprod ortamda çalışacak paket için
  
-                compile 'com.bkm.bexandroidsdk:bexandroidsdk:Preprod_1.0.8'
+                compile 'com.bkm.bexandroidsdk:bexandroidsdk:Preprod_1.0.10'
                 
  * Prod ortamda çalışacak paket için
  
-                compile 'com.bkm.bexandroidsdk:bexandroidsdk:1.0.8'
+                compile 'com.bkm.bexandroidsdk:bexandroidsdk:1.0.10'
 
 * Yukarıdaki eklemeleri yapıp, projenizi gradle ile sync ettikten sonra BEX SDK nın,  BEXStarter sınıfına erişebilirsiniz. **BEXStarter** sınıfı, sunulan servis paketlerinin çalışmalarını sağlamakta, ve parametrik olarak verilen **BEXSubmitConsumerListener** && **BEXPaymentListener** interfaceleri ile de asynchrone olarak sonucu işyerine iletmektedir. (Ayrıntılı bilgi için lütfen Örnek Projeye Bakınız!)
 
@@ -54,7 +54,7 @@ BKM Express Android SDK paketinin kullanılabilmesi için gerekmektedir. İşyer
 
 ###BEXPaymentListener
 
-                 public void onSuccess(); //BAŞARILI ÖDEME İŞLEMİ 
+                 public void onSuccess(PosResult posResult); //BAŞARILI ÖDEME İŞLEMİ - PosResult objesi pos cevabını taşımaktadır.
                  public void onCancelled(); //KULLANICI ÖDEME İŞLEMİNİ İPTAL ETTİ
                  public void onFailure(int errorId,String errorMsg); //ÖDEME İŞLEMİ VERİLEN HATA YÜZÜNDEN İPTAL EDİLDİ
 
