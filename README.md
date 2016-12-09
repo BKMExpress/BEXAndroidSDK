@@ -43,7 +43,7 @@ BKM Express Android SDK paketinin kullanılabilmesi için gerekmektedir. İşyer
 
                 public static void startSDKForSubmitConsumer(Context context, String token, String api_key,BEXSubmitConsumerListener bexSubmitConsumerListener);
 
-                public static void startSDKForPayment(Context context, String token, String api_key,BEXResponseListener listener);
+                public static void startSDKForPayment(Context context, String token, String api_key,BEXPaymentListener paymentListener);
 ***
 
 ###BEXSubmitConsumerListener
