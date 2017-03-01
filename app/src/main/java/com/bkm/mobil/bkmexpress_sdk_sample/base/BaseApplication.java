@@ -1,4 +1,4 @@
-package com.bkm.mobil.bkmexpress_sdk_sample;
+package com.bkm.mobil.bkmexpress_sdk_sample.base;
 
 import android.app.Application;
 

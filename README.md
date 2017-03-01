@@ -27,23 +27,19 @@ BKM Express Android SDK paketinin kullanılabilmesi için gerekmektedir. İşyer
 * Daha sonra yine aynı dosyadaki dependencies kısmına aşağıdaki gradle bağlantılarını ekleyiniz.
 
                 compile 'com.android.support:support-v4:25.0.1'
-                compile 'com.android.support:appcompat-v7:25.0.1'
+                compile 'com.android.support:appcompat-v7:25.2.0'
  
- * Preprod ortamda çalışacak paket için
+* Test, Preprod veya Prod ortamda çalışacak paket için
  
-                compile 'com.bkm.bexandroidsdk:bexandroidsdk:Preprod_1.0.10'
-                
- * Prod ortamda çalışacak paket için
- 
-                compile 'com.bkm.bexandroidsdk:bexandroidsdk:1.0.10'
+                compile 'com.bkm.bexandroidsdk:bexandroidsdk:Preprod_1.1.1'
 
 * Yukarıdaki eklemeleri yapıp, projenizi gradle ile sync ettikten sonra BEX SDK nın,  BEXStarter sınıfına erişebilirsiniz. **BEXStarter** sınıfı, sunulan servis paketlerinin çalışmalarını sağlamakta, ve parametrik olarak verilen **BEXSubmitConsumerListener** && **BEXPaymentListener** interfaceleri ile de asynchrone olarak sonucu işyerine iletmektedir. (Ayrıntılı bilgi için lütfen Örnek Projeye Bakınız!)
 
 ###BEXStarter
 
-                public static void startSDKForSubmitConsumer(Context context, String token, String api_key,BEXSubmitConsumerListener bexSubmitConsumerListener);
+                public static void startSDKForSubmitConsumer(Context context, Environment environment, String token, String api_key,BEXSubmitConsumerListener bexSubmitConsumerListener);
 
-                public static void startSDKForPayment(Context context, String token, String api_key,BEXPaymentListener paymentListener);
+                public static void startSDKForPayment(Context context, Environment environment, String token, String api_key,BEXPaymentListener paymentListener);
 ***
 
 ###BEXSubmitConsumerListener
@@ -61,7 +57,7 @@ BKM Express Android SDK paketinin kullanılabilmesi için gerekmektedir. İşyer
 
 
 ###ÖRNEK KULLANIM - SUBMIT CONSUMER (KART EŞLEME)
-                  BEXStarter.startSDKForSubmitConsumer(MainActivity.this, "MERCHANT-TOKEN", "API_KEY", new BEXSubmitConsumerListener() {
+                  BEXStarter.startSDKForSubmitConsumer(MainActivity.this,Environment.PREPROD, "MERCHANT-TOKEN", "API_KEY", new BEXSubmitConsumerListener() {
 
                                 @Override
                                 public void onSuccess() {
@@ -81,7 +77,7 @@ BKM Express Android SDK paketinin kullanılabilmesi için gerekmektedir. İşyer
 
 
 ###ÖRNEK KULLANIM - PAYMENT (ÖDEME)
-                  BEXStarter.startSDKForPayment(Payment.this, "MERCHANT-TOKEN", "API_KEY", new BEXPaymentListener() {
+                  BEXStarter.startSDKForPayment(Payment.this,Environment.PREPROD, "MERCHANT-TOKEN", "API_KEY", new BEXPaymentListener() {
                                  
                                  @Override
                                  public void onSuccess() {
@@ -100,8 +96,9 @@ BKM Express Android SDK paketinin kullanılabilmesi için gerekmektedir. İşyer
                   });
 ##ORTAMLAR
 
-BKM Express Android SDK paketi iki farklı ortamda çalışmaktadır. 
+BKM Express Android SDK paketi üç farklı ortamda çalışmaktadır. (Ortam değişikliği => Environment parametresi ile gerçekleşmektedir. Lütfen örnek koda bakınız.)
 
+* TEST
 * PREPROD
 * PROD
 

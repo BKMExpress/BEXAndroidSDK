@@ -1,4 +1,4 @@
-package com.bkm.mobil.bkmexpress_sdk_sample;
+package com.bkm.mobil.bkmexpress_sdk_sample.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +10,10 @@ import android.widget.Toast;
 
 import com.bkm.bexandroidsdk.core.BEXPaymentListener;
 import com.bkm.bexandroidsdk.core.BEXStarter;
+import com.bkm.bexandroidsdk.en.Environment;
 import com.bkm.bexandroidsdk.n.bexdomain.PosResult;
+import com.bkm.mobil.bkmexpress_sdk_sample.R;
+import com.bkm.mobil.bkmexpress_sdk_sample.network.RestManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,7 +47,7 @@ public class Payment extends AppCompatActivity {
                     RestManager.getInstance().requestPurchasePreprodToken(appEdtAmount.getText().toString()).enqueue(new Callback<String>() {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
-                            BEXStarter.startSDKForPayment(Payment.this, response.body(), API_KEY, new BEXPaymentListener() {
+                            BEXStarter.startSDKForPayment(Payment.this, Environment.PREPROD, response.body(), API_KEY, new BEXPaymentListener() {
                                 @Override
                                 public void onSuccess(PosResult posResult) {
                                     Toast.makeText(Payment.this, "Ödeme Başarılı !!\n" +

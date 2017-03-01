@@ -1,4 +1,4 @@
-package com.bkm.mobil.bkmexpress_sdk_sample;
+package com.bkm.mobil.bkmexpress_sdk_sample.network;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -12,14 +12,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by bsoykal on 26/08/16.
  */
-
-
 public class RestManager {
 
-private static DummyMerchantCalls instance;
+private static MerchantCalls instance;
 
 
-    public static DummyMerchantCalls getInstance(){
+    public static MerchantCalls getInstance(){
         if(instance==null){
             Gson gson = new GsonBuilder()
                     .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
@@ -34,7 +32,7 @@ private static DummyMerchantCalls instance;
                             .writeTimeout(20, TimeUnit.SECONDS).build())
                     .build();
 
-            instance = retrofit.create(DummyMerchantCalls.class);
+            instance = retrofit.create(MerchantCalls.class);
         }
 
         return instance;

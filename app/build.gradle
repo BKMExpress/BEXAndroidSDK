@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.getkeepsafe.dexcount'
 
 def RETROFIT_VERSION = '2.1.0'
-def SUPPORT_VERSION = "25.0.1"
+def SUPPORT_VERSION = "25.2.0"
 
 
 repositories{
@@ -25,6 +25,7 @@ dexcount {
 
 
 android {
+
     compileSdkVersion 25
     buildToolsVersion "24.0.3"
     defaultConfig {
@@ -38,18 +39,16 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.bkm.bexandroidsdk:bexandroidsdk:Preprod_1.0.10'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    compile 'com.bkm.bexandroidsdk:bexandroidsdk:1.1.1'
     compile "com.android.support:support-v4:$SUPPORT_VERSION"
     compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
-    testCompile 'org.testng:testng:6.9.6'
 }

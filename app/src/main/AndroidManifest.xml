@@ -7,10 +7,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".BaseApplication">
+        android:name=".base.BaseApplication">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:screenOrientation="userPortrait"
            >
             <intent-filter>
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Payment"
+            android:name=".ui.Payment"
             android:screenOrientation="userPortrait"
            />
 

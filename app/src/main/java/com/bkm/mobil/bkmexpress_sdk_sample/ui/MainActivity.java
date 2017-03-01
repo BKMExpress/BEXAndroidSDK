@@ -1,29 +1,26 @@
-package com.bkm.mobil.bkmexpress_sdk_sample;
+package com.bkm.mobil.bkmexpress_sdk_sample.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatImageButton;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Toast;
 
 import com.bkm.bexandroidsdk.core.BEXStarter;
 import com.bkm.bexandroidsdk.core.BEXSubmitConsumerListener;
+import com.bkm.bexandroidsdk.en.Environment;
+import com.bkm.mobil.bkmexpress_sdk_sample.R;
+import com.bkm.mobil.bkmexpress_sdk_sample.network.RestManager;
 
-import java.util.concurrent.TimeUnit;
-
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
 
+/**
+ * Created by bsoykal on 14/10/2016.
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private AppCompatButton appBtnCardSync;
@@ -71,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     //START SUBMIT CONSUMER FOR QUICKPAY //
 
-                    BEXStarter.startSDKForSubmitConsumer(MainActivity.this, response.body(), getString(R.string.dummyApiKey), new BEXSubmitConsumerListener() {
+                    BEXStarter.startSDKForSubmitConsumer(MainActivity.this, Environment.PREPROD, response.body(), getString(R.string.dummyApiKey), new BEXSubmitConsumerListener() {
 
                         @Override
                         public void onSuccess() { //SUBMIT WAS SUCCESSFULL
@@ -94,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-
                 Toast.makeText(MainActivity.this, "Token failed", Toast.LENGTH_SHORT).show();
             }
         });
