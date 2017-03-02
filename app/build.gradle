@@ -48,7 +48,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
-    compile 'com.bkm.bexandroidsdk:bexandroidsdk:1.1.1'
+    compile 'com.bkm.bexandroidsdk:bexandroidsdk:1.1.2'
     compile "com.android.support:support-v4:$SUPPORT_VERSION"
     compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
 }
