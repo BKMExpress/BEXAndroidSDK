@@ -24,7 +24,7 @@ private static MerchantCalls instance;
                     .create();
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://62.244.244.116:8081")
+                    .baseUrl("http://31.145.171.116:8081")
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .client(new OkHttpClient().newBuilder()
                             .connectTimeout(20, TimeUnit.SECONDS)
