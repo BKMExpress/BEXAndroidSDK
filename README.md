@@ -10,36 +10,53 @@
 
 ##NASIL ÇALIŞIR?
 
-Işyerleri BKM Express entegrasyonlarını tamamlayarak gerekli **API Key**lerini almalıdırlar. Bu API Key daha sonra
-BKM Express Android SDK paketinin kullanılabilmesi için gerekmektedir. İşyeri servis uygulamaları, BKMExpress core servislerine bağlanarak kendileri için hazırlanan **TOKEN**'ı ve **API Key**'i sunulan methodlara parametrik olarak ileterek, istenen BKMExpress akışı başlatılır. Daha detaylı bilgi ilerleyen kısımlarda verilecektir.
+Işyerleri BKM Express entegrasyonlarını tamamlayarak gerekli **kullanıcı adı** ve **şifrelerini** almalıdırlar. Bu kullanıcı adı ve şifre 
+BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olması için gerekmektedir. İşyeri servis uygulamaları, BKMExpress core servislerine bağlanarak kendileri için hazırlanan **TOKEN**'ı sunulan methodlara parametrik olarak ileterek, istenen BKMExpress akışı başlatılır. Daha detaylı bilgi ilerleyen kısımlarda verilecektir.
 
 ##GRADLE ENTEGRASYONU
 
-* SDK paketini gradle dependency ile eklemek için, uygulamanızın build.gradle dosyasındaki repositories kısmına aşağıdaki kod bloğunu ekleyiniz.
+* Entegrasyona başlarken lütfen size sunduğumuz kullanıcı adı ve şifreyi, local.properties dosyasına aşağıdaki gibi ekleyiniz. 
 
-                repositories{
-                    jcenter()
-                    maven{
-                          url 'https://dl.bintray.com/bkmexpress/maven'
+                bkm_username=<<YOUR_USERNAME>>
+                bkm_password=<<YOUR_PASSWORD>>
+                bkm_maven_url = http://54.174.1.67/artifactory/bexandroidsdk-release-android
+
+* SDK paketini gradle dependency ile eklemek için, <u>projenizin</u> build.gradle dosyasındaki repositories kısmına aşağıdaki kod bloğunu ekleyiniz.
+
+                Properties properties = new Properties()
+                properties.load(project.rootProject.file('local.properties').newDataInputStream())
+                
+                
+                allprojects {
+                    repositories {
+                        jcenter()
+                        maven {
+                            url = properties.getProperty("bkm_maven_url")
+                            credentials {
+                                username = properties.getProperty("bkm_username")
+                                password = properties.getProperty("bkm_password")
+                            }
+                        }
                     }
-                 }
-
-* Daha sonra yine aynı dosyadaki dependencies kısmına aşağıdaki gradle bağlantılarını ekleyiniz.
-
-                compile 'com.android.support:support-v4:25.0.1'
-                compile 'com.android.support:appcompat-v7:25.2.0'
- 
+                }
+                
+* Daha sonra yine <u>uygulamanızın</u> build.gradle dosyasındaki dependencies kısmına aşağıdaki gradle bağlantılarını ekleyiniz.
+        
+        compile 'com.android.support:appcompat-v7:25.3.1'
+        compile 'com.android.support:support-v4:25.3.1'
+                
 * Test, Preprod veya Prod ortamda çalışacak paket için
- 
-                compile 'com.bkm.bexandroidsdk:bexandroidsdk:1.1.2'
+                 
+        compile 'com.bkm:bexandroidsdk:1.1.9'
+
 
 * Yukarıdaki eklemeleri yapıp, projenizi gradle ile sync ettikten sonra BEX SDK nın,  BEXStarter sınıfına erişebilirsiniz. **BEXStarter** sınıfı, sunulan servis paketlerinin çalışmalarını sağlamakta, ve parametrik olarak verilen **BEXSubmitConsumerListener** && **BEXPaymentListener** interfaceleri ile de asynchrone olarak sonucu işyerine iletmektedir. (Ayrıntılı bilgi için lütfen Örnek Projeye Bakınız!)
 
 ###BEXStarter
 
-                public static void startSDKForSubmitConsumer(Context context, Environment environment, String token, String api_key,BEXSubmitConsumerListener bexSubmitConsumerListener);
+                public static void startSDKForSubmitConsumer(Context context, Environment environment, String token, BEXSubmitConsumerListener listener)
 
-                public static void startSDKForPayment(Context context, Environment environment, String token, String api_key,BEXPaymentListener paymentListener);
+                public static void startSDKForPayment(Context context, Environment environment, String token,BEXPaymentListener paymentListener);
 ***
 
 ###BEXSubmitConsumerListener
@@ -57,7 +74,8 @@ BKM Express Android SDK paketinin kullanılabilmesi için gerekmektedir. İşyer
 
 
 ###ÖRNEK KULLANIM - SUBMIT CONSUMER (KART EŞLEME)
-                  BEXStarter.startSDKForSubmitConsumer(MainActivity.this,Environment.PREPROD, "MERCHANT-TOKEN", "API_KEY", new BEXSubmitConsumerListener() {
+
+                  BEXStarter.startSDKForSubmitConsumer(MainActivity.this,Environment.PREPROD, "MERCHANT-TOKEN", new BEXSubmitConsumerListener() {
 
                                 @Override
                                 public void onSuccess() {
@@ -77,7 +95,7 @@ BKM Express Android SDK paketinin kullanılabilmesi için gerekmektedir. İşyer
 
 
 ###ÖRNEK KULLANIM - PAYMENT (ÖDEME)
-                  BEXStarter.startSDKForPayment(Payment.this,Environment.PREPROD, "MERCHANT-TOKEN", "API_KEY", new BEXPaymentListener() {
+                  BEXStarter.startSDKForPayment(Payment.this,Environment.PREPROD, "MERCHANT-TOKEN", new BEXPaymentListener() {
                                  
                                  @Override
                                  public void onSuccess() {
@@ -102,9 +120,9 @@ BKM Express Android SDK paketi üç farklı ortamda çalışmaktadır. (Ortam de
 * PREPROD
 * PROD
 
-**Her ortamın API KEY i diğerlerinden farklıdır.**
+**Her ortam için kullanıcı adı ve şifre aynıdır.**
 
-**NOT:** Entegrasyon sırasında işyerlerine verilen anahtarların sorumluluğu, **işyerine** aittir.
+**NOT:** Entegrasyon sırasında işyerlerine verilen kullanıcı adı ve şifrenin sorumluluğu, **işyerine** aittir.
 
 
 

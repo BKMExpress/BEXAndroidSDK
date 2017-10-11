@@ -12,9 +12,21 @@ buildscript {
     }
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+
 allprojects {
     repositories {
         jcenter()
+
+        maven {
+            url = properties.getProperty("bkm_maven_url")
+            credentials {
+                username = properties.getProperty("bkm_username")
+                password = properties.getProperty("bkm_password")
+            }
+        }
     }
 }
 

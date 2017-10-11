@@ -7,9 +7,7 @@ def SUPPORT_VERSION = "25.3.1"
 
 repositories{
     jcenter()
-    maven{
-        url 'https://dl.bintray.com/bkmexpress/maven'
-    }
+
 }
 dexcount {
     format = "list"
@@ -27,11 +25,11 @@ dexcount {
 android {
 
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "com.bkm.mobil.bkmexpress_sdk_sample"
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -46,9 +44,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'com.bkm.bexandroidsdk:bexandroidsdk:1.1.2'
-    compile "com.android.support:support-v4:$SUPPORT_VERSION"
     compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
+    compile "com.android.support:support-v4:$SUPPORT_VERSION"
+    compile 'com.bkm:bexandroidsdk:1.1.9'
 }

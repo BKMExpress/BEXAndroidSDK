@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void startCardSyncAction() {
 
-        RestManager.getInstance().requestTokenForInitConsumer().enqueue(new Callback<String>() {
+        RestManager.getInstance().requestTestTokenForInitConsumer().enqueue(new Callback<String>() {
 
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     //START SUBMIT CONSUMER FOR QUICKPAY //
 
-                    BEXStarter.startSDKForSubmitConsumer(MainActivity.this, Environment.PREPROD, response.body(), getString(R.string.dummyApiKey), new BEXSubmitConsumerListener() {
+                    BEXStarter.startSDKForSubmitConsumer(MainActivity.this, Environment.TEST, response.body(), new BEXSubmitConsumerListener() {
 
                         @Override
                         public void onSuccess() { //SUBMIT WAS SUCCESSFULL

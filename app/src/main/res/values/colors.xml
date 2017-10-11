@@ -6,4 +6,114 @@
     <color name="white">#FFFFFF</color>
     <color name="ripple">#60414141</color>
     <color name="soft_green">#3199a2</color>
+    <color name="bex_white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#00FF00</color>
+    <color name="blue">#0000FF</color>
+    <color name="bkm">#26343A</color>
+    <color name="gray">#DEDEDE</color>
+    <color name="soft_gray">#f0f1f2</color>
+    <color name="transparent">#00000000</color>
+
+
+    <color name="dark_gray">#36474F</color>
+    <color name="dark_blue">#00788A</color>
+    <color name="ff_dark_blue">#FF00788A</color>
+
+    <color name="light_gray">#CECECE</color>
+    <color name="card_color">#6A6A71</color>
+    <color name="date_color">#8A6633</color>
+    <color name="dialog_header">#00353B</color>
+
+    <color name="color_DDDDDD">#DDDDDD</color>
+    <color name="color_00788A">#00788A</color>
+    <color name="color_36474F">#36474F</color>
+    <color name="color_617277">#617277</color>
+    <color name="color_323232">#323232</color>
+    <color name="color_B1AEB0">#B1AEB0</color>
+    <color name="color_DCDCDC">#DCDCDC</color>
+    <color name="color_607277">#607277</color>
+    <color name="color_B1ADB0">#B1ADB0</color>
+
+
+    <color name="divider_black">#25343A</color>
+    <color name="divider_gray">#E2E3E7</color>
+    <color name="divider_dark_gray">#444444</color>
+
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="menu_item_continue_passive">#B2323232</color>
+    <color name="menu_item_continue_active">#00788A</color>
+    <color name="brown">#8A6633</color>
+    <color name="light_brown">#CC8A6633</color>
+    <color name="light_gray_with_alpha">#CCF2F2F2</color>
+
+
+    <color name="check_box_white">#DDDDDD</color>
+    <color name="check_box_gray">#617277</color>
+
+
+    <color name="tab_highlight">#0396A5</color>
+    <color name="tab_text_color_acik">#E1E3E6</color>
+    <color name="tab_text_color_koyu">#d2232b2b</color>
+
+
+    <color name="bex_black">#3F3F3F</color>
+
+    <color name="bex_black_partial_transparent">#60181818</color>
+    <color name="bex_off_white">#FAFAFA</color>
+
+    <color name="bex_off_white_partial_transparent">#60FAFAFA</color>
+    <color name="bex_background_darkgreen">#00373F</color>
+
+    <color name="bex_otp_passive">#345357</color>
+    <color name="bex_otp_active">#EFEFEF</color>
+    <color name="bex_actionbar_text_green">#0F7687</color>
+
+    <color name="light_blue">#1ACCFF</color>
+    <color name="rippelColor">#FFFFFF</color>
+    <color name="bex_statusbar_gray">#cfcfcf</color>
+    <color name="bex_statusbar_splash">#193C41</color>
+
+    <color name="no_operation_text_color">#AEAEAE</color>
+
+    <color name="bex_row_gray">#f4f4f4</color>
+    <color name="bex_dashboard_swipeBar_green">#107788</color>
+    <color name="empty_card_text_color">#1FBDD7</color>
+
+    <color name="bex_green">#098da1</color>
+    <color name="bex_dark_green">#017789</color>
+    <color name="bex_very_dark_green">#015A6C</color>
+    <color name="bex_green_softer">#0097a7</color>
+    <color name="bex_red">#dc363c</color>
+    <color name="bex_gray">#617277</color>
+    <color name="bex_gray_softer">#8b9193</color>
+    <color name="bex_light_gray">#CECECE</color>
+    <color name="bex_softestgray">#c5c5c5</color>
+
+    <color name="bex_divider">#696969</color>
+    <color name="bex_dialog_divider">#E6E6E6</color>
+    <color name="bex_text_black">#414141</color>
+    <color name="bex_orange">#FF9649</color>
+
+    <color name="edt_inner_bg">@android:color/white</color>
+    <color name="edt_border_color">#005360</color>
+    <color name="edt_border_color_focused">#FF0000</color>
+    <color name="cet_text_type_color">@android:color/white</color>
+    <color name="cet_text_input_color">@android:color/black</color>
+    <color name="campaign_unread_color">#E8F7F9</color>
+    <color name="bex_softgray_line_color">#EEEEEE</color>
+
+    <color name="failed_operation_red">#F38181</color>
+    <color name="success_operation_green">#72D16A</color>
+    <color name="card_gradient">#1f434949</color>
+    <color name="card_gradient2">#e8f4f6</color>
+
+    <color name="shadow_gray">#f9f9f9</color>
+    <color name="ebook_green">#4BD0AF</color>
+    <color name="bex_softgray_divider">#E6E6E6</color>
+    <color name="bex_soft_green">#54C9DA</color>
+    <color name="bex_delete_bin_red">#F96055</color>
+
+    <color name="bex_block_opaqe_color">#ecf5f7</color>
 </resources>

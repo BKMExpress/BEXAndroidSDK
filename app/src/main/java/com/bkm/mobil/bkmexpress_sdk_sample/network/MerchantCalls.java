@@ -19,4 +19,12 @@ public interface MerchantCalls {
     @GET("PreProdToken/Service1.svc/Amount/{amount}")
     Call<String> requestPurchasePreprodToken(@Path("amount") String amount);
 
+
+    @GET("/ConsumerTestService/Service1.svc/Consumer")
+    Call<String> requestTestTokenForInitConsumer();
+
+    @GET("Token/Service1.svc/Amount/{amount}")
+    Call<String> getPurchaseTestToken(@Path("amount") String amount);
+
+
 }
