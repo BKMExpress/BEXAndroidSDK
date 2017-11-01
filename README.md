@@ -1,19 +1,19 @@
-#BKM EXPRESS ANDROID SDK
+# BKM EXPRESS ANDROID SDK
 
-##NE İŞE YARAR?
+## NE İŞE YARAR?
 > Hizmetinize sunulan BKM Express Android SDK paketi ile son kullanıcının Android cihazında BKMExpress uygulaması kurulu olmasa dahi, "Kart Eşleme ve Ödeme Yapma" özelliklerini uygulamanızdan çıkış yapma gereksinimi olmadan halletmenize olanak sunar.
 
-##SİSTEM GEREKSİNİMLERİ NELERDİR?
+## SİSTEM GEREKSİNİMLERİ NELERDİR?
 
  *  BKM Express Android SDK paketi, Android Studio ile geliştirilen uygulamalar baz alınarak tasarlanmıştır.
  *  Min SDK Version 15 desteklenmektedir.
 
-##NASIL ÇALIŞIR?
+## NASIL ÇALIŞIR?
 
 Işyerleri BKM Express entegrasyonlarını tamamlayarak gerekli **kullanıcı adı** ve **şifrelerini** almalıdırlar. Bu kullanıcı adı ve şifre 
 BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olması için gerekmektedir. İşyeri servis uygulamaları, BKMExpress core servislerine bağlanarak kendileri için hazırlanan **TOKEN**'ı sunulan methodlara parametrik olarak ileterek, istenen BKMExpress akışı başlatılır. Daha detaylı bilgi ilerleyen kısımlarda verilecektir.
 
-##GRADLE ENTEGRASYONU
+## GRADLE ENTEGRASYONU
 
 * Entegrasyona başlarken lütfen size sunduğumuz kullanıcı adı ve şifreyi, local.properties dosyasına aşağıdaki gibi ekleyiniz. 
 
@@ -53,19 +53,19 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
 ***
 
-###BEXStarter
+### BEXStarter
 
                 public static void startSDKForSubmitConsumer(Context context, Environment environment, String token, BEXSubmitConsumerListener listener);
                 public static void startSDKForPayment(Context context, Environment environment, String token,BEXPaymentListener paymentListener);
 
 
-###BEXSubmitConsumerListener
+### BEXSubmitConsumerListener
 
                  public void onSuccess(); //BAŞARILI EŞLEŞME 
                  public void onCancelled(); //KULLANICI İŞLEMİ İPTAL ETTİ
                  public void onFailure(int errorId,String errorMsg); //İŞLEM VERİLEN HATA YÜZÜNDEN İPTAL EDİLDİ
 
-###BEXPaymentListener
+### BEXPaymentListener
 
                  public void onSuccess(PosResult posResult); //BAŞARILI ÖDEME İŞLEMİ - PosResult objesi pos cevabını taşımaktadır.
                  public void onCancelled(); //KULLANICI ÖDEME İŞLEMİNİ İPTAL ETTİ
@@ -73,9 +73,9 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
 
 
-###ÖRNEK KULLANIM - SUBMIT CONSUMER (KART EŞLEME)
+### ÖRNEK KULLANIM - SUBMIT CONSUMER (KART EŞLEME)
 
-                  BEXStarter.startSDKForSubmitConsumer(MainActivity.this,Environment.PREPROD, "MERCHANT-TOKEN", new BEXSubmitConsumerListener() {
+                  BEXStarter.startSDKForSubmitConsumer(MainActivity.this,Environment.PREPROD, "MERCHANT-TOKEN", new  BEXSubmitConsumerListener() {
 
                                 @Override
                                 public void onSuccess() {
@@ -94,7 +94,7 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
                             });
 
 
-###ÖRNEK KULLANIM - PAYMENT (ÖDEME)
+### ÖRNEK KULLANIM - PAYMENT (ÖDEME)
 
                   BEXStarter.startSDKForPayment(Payment.this,Environment.PREPROD, "MERCHANT-TOKEN", new BEXPaymentListener() {
                                  
@@ -114,12 +114,12 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
                                   }
                   });
                   
-##PROGUARD AYARLARI
+## PROGUARD AYARLARI
 
  Eğer uygulamanızın release versiyonunu proguard ile koruyorsanız, lütfen aşağıdaki satırı proguard-rules dosyanıza ekleyiniz.
                       
                       -keep class com.bkm.** { *; }
-##ORTAMLAR
+## ORTAMLAR
 
 BKM Express Android SDK paketi üç farklı ortamda çalışmaktadır. (Ortam değişikliği => Environment parametresi ile gerçekleşmektedir. Lütfen örnek koda bakınız.)
 
