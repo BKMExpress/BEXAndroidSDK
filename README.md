@@ -51,6 +51,8 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
 * Yukarıdaki eklemeleri yapıp, projenizi gradle ile sync ettikten sonra BEX SDK nın,  BEXStarter sınıfına erişebilirsiniz. **BEXStarter** sınıfı, sunulan servis paketlerinin çalışmalarını sağlamakta, ve parametrik olarak verilen **BEXSubmitConsumerListener** && **BEXPaymentListener** interfaceleri ile de asynchrone olarak sonucu işyerine iletmektedir. (Ayrıntılı bilgi için lütfen Örnek Projeye Bakınız!)
 
+***
+
 ###BEXStarter
 
                 public static void startSDKForSubmitConsumer(Context context, Environment environment, String token, BEXSubmitConsumerListener listener);
@@ -93,6 +95,7 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
 
 ###ÖRNEK KULLANIM - PAYMENT (ÖDEME)
+
                   BEXStarter.startSDKForPayment(Payment.this,Environment.PREPROD, "MERCHANT-TOKEN", new BEXPaymentListener() {
                                  
                                  @Override
@@ -111,7 +114,8 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
                                   }
                   });
                   
-###PROGUARD AYARLARI
+##PROGUARD AYARLARI
+
  Eğer uygulamanızın release versiyonunu proguard ile koruyorsanız, lütfen aşağıdaki satırı proguard-rules dosyanıza ekleyiniz.
                       
                       -keep class com.bkm.** { *; }
