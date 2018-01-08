@@ -36,13 +36,13 @@ android {
     }
     buildTypes {
         debug {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -53,6 +53,6 @@ dependencies {
 
     compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
     compile "com.android.support:support-v4:$SUPPORT_VERSION"
-    compile 'com.bkm:bexandroidsdk:1.1.15'
+    compile 'com.bkm:bexandroidsdk:1.1.16'
 
 }
