@@ -2,12 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.getkeepsafe.dexcount'
 
 def RETROFIT_VERSION = '2.1.0'
-def SUPPORT_VERSION = "25.3.1"
+def SUPPORT_VERSION = "25.4.0"
 
 
 repositories{
     jcenter()
-
+    maven {
+        url 'https://maven.google.com'
+    }
+    mavenCentral()
 }
 dexcount {
     format = "list"

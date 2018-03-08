@@ -42,10 +42,10 @@ public class Payment extends AppCompatActivity {
                 String amount = appEdtAmount.getText().toString();
                 if (amount != null && amount.length() != 0) {
 
-                    RestManager.getInstance().requestPurchasePreprodToken(appEdtAmount.getText().toString()).enqueue(new Callback<String>() {
+                    RestManager.getInstance().getPurchaseTestToken(appEdtAmount.getText().toString()).enqueue(new Callback<String>() {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
-                            BEXStarter.startSDKForPayment(Payment.this, Environment.PREPROD, response.body(), new BEXPaymentListener() {
+                            BEXStarter.startSDKForPayment(Payment.this, Environment.TEST, response.body(), new BEXPaymentListener() {
                                 @Override
                                 public void onSuccess(PosResult posResult) {
                                     Toast.makeText(Payment.this, "Ödeme Başarılı !!\n" +
