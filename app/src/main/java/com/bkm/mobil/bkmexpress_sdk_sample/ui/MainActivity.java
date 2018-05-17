@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     BEXStarter.startSDKForSubmitConsumer(MainActivity.this, Environment.TEST, response.body(), new BEXSubmitConsumerListener() {
 
                         @Override
-                        public void onSuccess() { //SUBMIT WAS SUCCESSFULL
-                            Toast.makeText(MainActivity.this, "Sync Completed!!!", Toast.LENGTH_LONG).show();
+                        public void onSuccess(String s, String s1) {
+                            Toast.makeText(MainActivity.this, "Sync Completed!!! \nFirst6 :: "+s+"\nLast2 :: "+s1, Toast.LENGTH_LONG).show();
                         }
 
                         @Override

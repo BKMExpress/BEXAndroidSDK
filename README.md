@@ -47,7 +47,7 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
                 
 * Test, Preprod veya Prod ortamda çalışacak paket için
                  
-        compile 'com.bkm:bexandroidsdk:1.1.16'
+        compile 'com.bkm:bexandroidsdk:1.1.17'
 
 * Yukarıdaki eklemeleri yapıp, projenizi gradle ile sync ettikten sonra BEX SDK nın,  BEXStarter sınıfına erişebilirsiniz. **BEXStarter** sınıfı, sunulan servis paketlerinin çalışmalarını sağlamakta, ve parametrik olarak verilen **BEXSubmitConsumerListener** && **BEXPaymentListener** interfaceleri ile de asynchrone olarak sonucu işyerine iletmektedir. (Ayrıntılı bilgi için lütfen Örnek Projeye Bakınız!)
 
@@ -57,11 +57,11 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
                 public static void startSDKForSubmitConsumer(Context context, Environment environment, String token, BEXSubmitConsumerListener listener);
                 public static void startSDKForPayment(Context context, Environment environment, String token,BEXPaymentListener paymentListener);
-
+                public static void startSDKForReSubmitConsumer(Context context,Environment environment,String ticketId,BEXSubmitConsumerListener listener);
 
 ### BEXSubmitConsumerListener
 
-                 public void onSuccess(); //BAŞARILI EŞLEŞME 
+                 public void onSuccess(String firtst6, String last2); //BAŞARILI EŞLEŞME - Başarılı eşleşme sonrası, eşleşen kartın ilk 6 ve son 2 hanesi işyerine geri dönülür.
                  public void onCancelled(); //KULLANICI İŞLEMİ İPTAL ETTİ
                  public void onFailure(int errorId,String errorMsg); //İŞLEM VERİLEN HATA YÜZÜNDEN İPTAL EDİLDİ
 
@@ -78,7 +78,7 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
                   BEXStarter.startSDKForSubmitConsumer(MainActivity.this,Environment.PREPROD, "MERCHANT-TOKEN", new  BEXSubmitConsumerListener() {
 
                                 @Override
-                                public void onSuccess() {
+                                public void onSuccess(String firtst6, String last2) {
                                     Toast.makeText(MainActivity.this,"Sync Completed!!!",Toast.LENGTH_LONG).show();
                                 }
 
@@ -92,6 +92,30 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
                                     Toast.makeText(MainActivity.this,"Sync failed!!! Cause :: "+errorMsg,Toast.LENGTH_LONG).show();
                                 }
                             });
+
+
+### ÖRNEK KULLANIM - RESUBMIT CONSUMER (KART EŞLEME)
+
+* Diğer işlemlerden farklı olarak, ReSubmitConsumer operasyonu <u>daha önceden kart eklemiş</u> kullanıcının tekrardan sisteme giriş yapmadan kart değiştirmesine olanak sağlamaktadır. Bahsi geçen Ticket, BEX Core servisleri tarafından sağlanmaktadır.
+
+                    BEXStarter.startSDKForReSubmitConsumer(Start.this, Environment.TEST, ticket, new BEXSubmitConsumerListener() {
+                                                  
+                                @Override
+                                public void onSuccess(String first6,String last2) {
+                                    Toast.makeText(Start.this,"Consumer resubmitted !!!\nFirst6 :: "+first6+"\nLast2 :: "+last2,Toast.LENGTH_LONG).show();
+                                }
+                          
+                                @Override
+                                public void onCancelled() {
+                                    Toast.makeText(Start.this,"cancelled!!!",Toast.LENGTH_LONG).show();
+                                }
+                          
+                                @Override
+                                public void onFailure(int errorId, String errorMsg) {
+                                    Toast.makeText(Start.this,errorMsg,Toast.LENGTH_LONG).show();
+                                }
+                            });
+
 
 
 ### ÖRNEK KULLANIM - PAYMENT (ÖDEME)
