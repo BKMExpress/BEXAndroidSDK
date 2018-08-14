@@ -56,6 +56,6 @@ dependencies {
 
     compile "com.android.support:appcompat-v7:$SUPPORT_VERSION"
     compile "com.android.support:support-v4:$SUPPORT_VERSION"
-    compile 'com.bkm:bexandroidsdk:1.1.17'
+    compile 'com.bkm:bexandroidsdk:1.1.18'
 
 }
