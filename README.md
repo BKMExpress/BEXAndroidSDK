@@ -39,15 +39,11 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
                         }
                     }
                 }
-                
-* Daha sonra yine <u>uygulamanızın</u> build.gradle dosyasındaki dependencies kısmına aşağıdaki gradle bağlantılarını ekleyiniz.
-        
-        compile 'com.android.support:appcompat-v7:25.3.1'
-        compile 'com.android.support:support-v4:25.3.1'
+               
                 
 * Test, Preprod veya Prod ortamda çalışacak paket için
                  
-        compile 'com.bkm:bexandroidsdk:1.1.18'
+        compile 'com.bkm:bexandroidsdk:1.1.19'
 
 * Yukarıdaki eklemeleri yapıp, projenizi gradle ile sync ettikten sonra BEX SDK nın,  BEXStarter sınıfına erişebilirsiniz. **BEXStarter** sınıfı, sunulan servis paketlerinin çalışmalarını sağlamakta, ve parametrik olarak verilen **BEXSubmitConsumerListener** && **BEXPaymentListener** interfaceleri ile de asynchrone olarak sonucu işyerine iletmektedir. (Ayrıntılı bilgi için lütfen Örnek Projeye Bakınız!)
 
