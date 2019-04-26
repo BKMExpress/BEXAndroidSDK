@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.getkeepsafe.dexcount'
 
 def RETROFIT_VERSION = '2.1.0'
-def SUPPORT_VERSION = "25.4.0"
+def SUPPORT_VERSION = "27.1.1"
 
 
 repositories{
@@ -28,7 +28,7 @@ dexcount {
 android {
 
     compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    buildToolsVersion "28.0.3"
     defaultConfig {
         applicationId "com.bkm.mobil.bkmexpress_sdk_sample"
         minSdkVersion 16
@@ -56,6 +56,6 @@ dependencies {
 
     implementation "com.android.support:appcompat-v7:$SUPPORT_VERSION"
     implementation "com.android.support:support-v4:$SUPPORT_VERSION"
-    implementation 'com.bkm:bexandroidsdk:1.1.21'
+    implementation 'com.bkm:bexandroidsdk:1.1.22'
 
 }
