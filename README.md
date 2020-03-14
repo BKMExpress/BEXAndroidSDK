@@ -41,9 +41,15 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
                 }
                
                 
-* Test, Preprod veya Prod ortamda çalışacak paket için
+* AndroidX desteği olan uygulamalar için;
                  
-        compile 'com.bkm:bexandroidsdk:1.1.22'
+        implementation 'com.bkm:bexandroidsdk:2.1.1'
+
+* AndroidX desteği BULUNMAYAN uygulamalar için;
+
+        implementation 'com.bkm:bexandroidsdk:1.1.23'
+
+
 
 * Yukarıdaki eklemeleri yapıp, projenizi gradle ile sync ettikten sonra BEX SDK nın,  BEXStarter sınıfına erişebilirsiniz. **BEXStarter** sınıfı, sunulan servis paketlerinin çalışmalarını sağlamakta, ve parametrik olarak verilen **BEXSubmitConsumerListener** && **BEXPaymentListener** interfaceleri ile de asynchrone olarak sonucu işyerine iletmektedir. (Ayrıntılı bilgi için lütfen Örnek Projeye Bakınız!)
 
