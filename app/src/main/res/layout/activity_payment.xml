@@ -1,65 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/main_bg">
 
-    <RelativeLayout
-        android:id="@+id/logo_container"
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/white_logo" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/amountInputLayout"
+        fontPath="fonts/open_sans_regular.ttf"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="50dp"
+        android:hint="@string/amount_hint"
+        android:textColorHint="@color/white"
+        app:errorTextAppearance="@style/bxsdk_TextInputLayout.TextAppearance.Error"
+        app:hintTextAppearance="@style/TextAppearence.App.TextInputLayoutWhite">
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/isyeri_logo2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/white_logo"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"/>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/txtinp_amount"
-            app:hintTextAppearance="@style/TextAppearence.App.TextInputLayoutWhite"
-            fontPath="fonts/open_sans_regular.ttf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/isyeri_logo2"
-            android:layout_marginTop="50dp"
-            android:hint="@string/amount_hint"
-            android:textColorHint="@color/white"
-            app:errorTextAppearance="@style/bxsdk_TextInputLayout.TextAppearance.Error"
-         >
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/appedt_amount"
-                android:layout_margin="30dp"
-                fontPath="fonts/open_sans_regular.ttf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:textColor="@color/white"
-                android:theme="@style/Theme.App.White" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.v7.widget.AppCompatButton
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/amountText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:layout_below="@+id/txtinp_amount"
-            android:src="@drawable/sdk_icon"
-            android:id="@+id/startpayment_btn"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/custom_white_button"
-            android:scaleType="centerInside"
-            android:text="@string/start_payment"
-            android:textColor="@color/soft_green"
-            android:textSize="16sp"
-            />
+            android:inputType="numberDecimal"
+            android:textColor="@color/white"
+            android:text="10,00"
+            android:theme="@style/Theme.App.White" />
+    </android.support.design.widget.TextInputLayout>
 
-    </RelativeLayout>
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/startPaymentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/amountInputLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="30dp"
+        android:background="@drawable/custom_white_button"
+        android:scaleType="centerInside"
+        android:src="@drawable/sdk_icon"
+        android:text="@string/start_payment"
+        android:textColor="@color/soft_green"
+        android:textSize="16sp" />
 
 </RelativeLayout>

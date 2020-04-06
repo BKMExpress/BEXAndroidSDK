@@ -1,57 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/main_bg">
 
     <RelativeLayout
         android:id="@+id/logo_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentTop="true">
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/isyeri_logo2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/white_logo"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"/>
+            android:layout_marginTop="80dp"
+            android:src="@drawable/white_logo" />
 
         <android.support.v7.widget.AppCompatButton
+            android:id="@+id/pairing_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="90dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
             android:layout_below="@+id/isyeri_logo2"
-            android:src="@drawable/sdk_icon"
-            android:id="@+id/eslesme_btn"
             android:layout_centerHorizontal="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="90dp"
+            android:layout_marginRight="50dp"
             android:background="@drawable/custom_white_button"
             android:scaleType="centerInside"
+            android:src="@drawable/sdk_icon"
             android:text="@string/quick_pay_label"
             android:textColor="@color/soft_green"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
         <android.support.v7.widget.AppCompatButton
+            android:id="@+id/payment_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_below="@+id/eslesme_btn"
-            android:src="@drawable/sdk_icon"
-            android:id="@+id/payment_btn"
+            android:layout_below="@+id/pairing_button"
             android:layout_centerHorizontal="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="50dp"
             android:background="@drawable/custom_white_button"
             android:scaleType="centerInside"
+            android:src="@drawable/sdk_icon"
             android:text="@string/payment_label"
             android:textColor="@color/soft_green"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
 
     </RelativeLayout>

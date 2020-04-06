@@ -14,17 +14,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RestManager {
 
-private static MerchantCalls instance;
+    private static MerchantCalls instance;
 
-
-    public static MerchantCalls getInstance(){
-        if(instance==null){
+    public static MerchantCalls getInstance() {
+        if (instance == null) {
             Gson gson = new GsonBuilder()
                     .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
                     .create();
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://31.145.171.116:8081")
+                    .baseUrl("https://preprod.bkmexpress.com.tr/BKMExpressTestMerchant/rest/")
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .client(new OkHttpClient().newBuilder()
                             .connectTimeout(20, TimeUnit.SECONDS)
@@ -37,7 +36,6 @@ private static MerchantCalls instance;
 
         return instance;
     }
-
 
 
 }
