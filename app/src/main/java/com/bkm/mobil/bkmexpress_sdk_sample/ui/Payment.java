@@ -14,6 +14,12 @@ import com.bkm.bexandroidsdk.en.Environment;
 import com.bkm.bexandroidsdk.n.bexdomain.PosResult;
 import com.bkm.mobil.bkmexpress_sdk_sample.R;
 import com.bkm.mobil.bkmexpress_sdk_sample.network.RestManager;
+import com.bkm.mobil.bkmexpress_sdk_sample.network.model.Bank;
+import com.bkm.mobil.bkmexpress_sdk_sample.network.model.PaymentRequest;
+import com.bkm.mobil.bkmexpress_sdk_sample.network.model.TokenResponse;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,61 +31,63 @@ import retrofit2.Response;
 
 public class Payment extends AppCompatActivity {
 
-    private AppCompatButton appBtnStartPayment;
-    private AppCompatEditText appEdtAmount;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
-        appEdtAmount = (AppCompatEditText) findViewById(R.id.appedt_amount);
+        final AppCompatEditText amountText = findViewById(R.id.amountText);
 
-        appBtnStartPayment = (AppCompatButton) findViewById(R.id.startpayment_btn);
-        appBtnStartPayment.setOnClickListener(new View.OnClickListener() {
+        AppCompatButton startPaymentButton = findViewById(R.id.startPaymentButton);
+        startPaymentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String amount = appEdtAmount.getText().toString();
-                if (amount != null && amount.length() != 0) {
+                String amount = amountText.getText().toString();
+                if (amount.length() != 0) {
+                    ArrayList<Bank> banks = new ArrayList<>();
+                    ArrayList<Integer> installments = new ArrayList<>(Collections.singletonList(1));
+                    banks.add(new Bank("0010", "Bank", "", installments));
 
-                    RestManager.getInstance().getPurchaseTestToken(appEdtAmount.getText().toString()).enqueue(new Callback<String>() {
+                    PaymentRequest paymentRequest = new PaymentRequest(banks, "0,00", amount);
+
+                    RestManager.getInstance().requestPayment(paymentRequest).enqueue(new Callback<TokenResponse>() {
                         @Override
-                        public void onResponse(Call<String> call, Response<String> response) {
-                            BEXStarter.startSDKForPayment(Payment.this, Environment.TEST, response.body(), new BEXPaymentListener() {
+                        public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
+                            TokenResponse tokenResponse = response.body();
+                            if (tokenResponse == null) {
+                                return;
+                            }
+                            BEXStarter.startSDKForPayment(Payment.this, Environment.PREPROD, tokenResponse.token, new BEXPaymentListener() {
                                 @Override
                                 public void onSuccess(PosResult posResult) {
-                                    Toast.makeText(Payment.this, "Ödeme Başarılı !!\n" +
-                                            "PosMsg :: "+posResult.getPosMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Payment.this, "Payment Completed!!!\n" +
+                                            "PosMsg :: " + posResult.getPosMessage(), Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
 
                                 @Override
                                 public void onCancelled() {
-                                    Toast.makeText(Payment.this, "Kullanıcı ödemeyi iptal etti !!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Payment.this, "Payment Cancelled By User!!!", Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
 
                                 @Override
                                 public void onFailure(int errorId, String errorMsg) {
-                                    Toast.makeText(Payment.this, "Hata :: " + errorMsg + " !!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Payment.this, "Payment failed!!! Cause :: " + errorMsg + " !!", Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
                             });
                         }
 
                         @Override
-                        public void onFailure(Call<String> call, Throwable t) {
-                            Toast.makeText(Payment.this, "Hata :: Token Alınamadı!!", Toast.LENGTH_SHORT).show();
+                        public void onFailure(Call<TokenResponse> call, Throwable t) {
+                            Toast.makeText(Payment.this, "Token failed", Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     });
-
-
                 }
             }
         });
-
-
     }
 
     @Override

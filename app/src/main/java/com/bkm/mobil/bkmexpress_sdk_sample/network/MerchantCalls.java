@@ -1,30 +1,21 @@
 package com.bkm.mobil.bkmexpress_sdk_sample.network;
 
+import com.bkm.mobil.bkmexpress_sdk_sample.network.model.PairingRequest;
+import com.bkm.mobil.bkmexpress_sdk_sample.network.model.PaymentRequest;
+import com.bkm.mobil.bkmexpress_sdk_sample.network.model.TokenResponse;
+
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
 
 /**
  * Created by bsoykal on 14/10/2016.
  */
-
 public interface MerchantCalls {
-    /**
-        Test amaçlı yazılmış servislerdir.
-     */
 
-    @GET("/ConsumerPreProdService/Service1.svc/Consumer")
-    Call<String> requestTokenForInitConsumer();
+    @POST("getTokenForInitPayment.do")
+    Call<TokenResponse> requestPayment(@Body PaymentRequest paymentRequest);
 
-    @GET("PreProdToken/Service1.svc/Amount/{amount}")
-    Call<String> requestPurchasePreprodToken(@Path("amount") String amount);
-
-
-    @GET("/ConsumerTestService/Service1.svc/Consumer")
-    Call<String> requestTestTokenForInitConsumer();
-
-    @GET("Token/Service1.svc/Amount/{amount}")
-    Call<String> getPurchaseTestToken(@Path("amount") String amount);
-
-
+    @POST("getConsumerId.do")
+    Call<TokenResponse> requestPairing(@Body PairingRequest pairingRequest);
 }
