@@ -13,7 +13,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/isyeri_logo2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"/>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtinp_amount"
             app:hintTextAppearance="@style/TextAppearence.App.TextInputLayoutWhite"
             fontPath="fonts/open_sans_regular.ttf"
@@ -34,7 +34,7 @@
             app:errorTextAppearance="@style/bxsdk_TextInputLayout.TextAppearance.Error"
          >
 
-            <android.support.v7.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/appedt_amount"
                 android:layout_margin="30dp"
                 fontPath="fonts/open_sans_regular.ttf"
@@ -43,9 +43,9 @@
                 android:inputType="numberDecimal"
                 android:textColor="@color/white"
                 android:theme="@style/Theme.App.White" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.v7.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"

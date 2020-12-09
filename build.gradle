@@ -9,7 +9,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath 'com.android.tools.build:gradle:4.1.1'
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -42,13 +42,13 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-subprojects {
-    afterEvaluate {project ->
-        if (project.hasProperty("android")) {
-            android {
-                compileSdkVersion 27
-                buildToolsVersion "27.0.3"
-            }
-        }
-    }
-}
+//subprojects {
+//    afterEvaluate {project ->
+//        if (project.hasProperty("android")) {
+//            android {
+//                compileSdkVersion 27
+//                buildToolsVersion "27.0.3"
+//            }
+//        }
+//    }
+//}

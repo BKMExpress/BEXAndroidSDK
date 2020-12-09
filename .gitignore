@@ -10,3 +10,6 @@
 /.idea/
 /.gradle/
 !/.idea/
+.idea
+store.keystore
+*.apk

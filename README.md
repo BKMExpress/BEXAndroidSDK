@@ -10,12 +10,12 @@
 
 ## NASIL ÇALIŞIR?
 
-Işyerleri BKM Express entegrasyonlarını tamamlayarak gerekli **kullanıcı adı** ve **şifrelerini** almalıdırlar. Bu kullanıcı adı ve şifre 
+Işyerleri BKM Express entegrasyonlarını tamamlayarak gerekli **kullanıcı adı** ve **şifrelerini** almalıdırlar. Bu kullanıcı adı ve şifre
 BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olması için gerekmektedir. İşyeri servis uygulamaları, BKMExpress core servislerine bağlanarak kendileri için hazırlanan **TOKEN**'ı sunulan methodlara parametrik olarak ileterek, istenen BKMExpress akışı başlatılır. Daha detaylı bilgi ilerleyen kısımlarda verilecektir.
 
 ## GRADLE ENTEGRASYONU
 
-* Entegrasyona başlarken lütfen size sunduğumuz kullanıcı adı ve şifreyi, local.properties dosyasına aşağıdaki gibi ekleyiniz. 
+* Entegrasyona başlarken lütfen size sunduğumuz kullanıcı adı ve şifreyi, local.properties dosyasına aşağıdaki gibi ekleyiniz.
 
                 bkm_username=<<YOUR_USERNAME>>
                 bkm_password=<<YOUR_PASSWORD>>
@@ -25,8 +25,8 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
                 Properties properties = new Properties()
                 properties.load(project.rootProject.file('local.properties').newDataInputStream())
-                
-                
+
+
                 allprojects {
                     repositories {
                         jcenter()
@@ -39,11 +39,11 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
                         }
                     }
                 }
-               
-                
+
+
 * AndroidX desteği olan uygulamalar için;
-                 
-        implementation 'com.bkm:bexandroidsdk:2.1.1'
+
+        implementation 'com.bkm:bexandroidsdk:2.1.3'
 
 * AndroidX desteği BULUNMAYAN uygulamalar için;
 
@@ -51,7 +51,7 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
 
 
-* Yukarıdaki eklemeleri yapıp, projenizi gradle ile sync ettikten sonra BEX SDK nın,  BEXStarter sınıfına erişebilirsiniz. **BEXStarter** sınıfı, sunulan servis paketlerinin çalışmalarını sağlamakta, ve parametrik olarak verilen **BEXSubmitConsumerListener** && **BEXPaymentListener** interfaceleri ile de asynchrone olarak sonucu işyerine iletmektedir. (Ayrıntılı bilgi için lütfen Örnek Projeye Bakınız!)
+* Yukarıdaki eklemeleri yapıp, projenizi gradle ile sync ettikten sonra BEX SDK nın,  BEXStarter sınıfına erişebilirsiniz. **BEXStarter** sınıfı, sunulan servis paketlerinin çalışmalarını sağlamakta, ve parametrik olarak verilen **BEXSubmitConsumerListener** && **BEXPaymentListener** interfaceleri ile de asenkron olarak sonucu işyerine iletmektedir. (Ayrıntılı bilgi için lütfen Örnek Projeye Bakınız!)
 
 ***
 
@@ -101,17 +101,17 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 * Diğer işlemlerden farklı olarak, ReSubmitConsumer operasyonu <u>daha önceden kart eklemiş</u> kullanıcının tekrardan sisteme giriş yapmadan kart değiştirmesine olanak sağlamaktadır. Bahsi geçen Ticket, BEX Core servisleri tarafından sağlanmaktadır.
 
                     BEXStarter.startSDKForReSubmitConsumer(Start.this, Environment.TEST, ticket, new BEXSubmitConsumerListener() {
-                                                  
+
                                 @Override
                                 public void onSuccess(String first6,String last2) {
                                     Toast.makeText(Start.this,"Consumer resubmitted !!!\nFirst6 :: "+first6+"\nLast2 :: "+last2,Toast.LENGTH_LONG).show();
                                 }
-                          
+
                                 @Override
                                 public void onCancelled() {
                                     Toast.makeText(Start.this,"cancelled!!!",Toast.LENGTH_LONG).show();
                                 }
-                          
+
                                 @Override
                                 public void onFailure(int errorId, String errorMsg) {
                                     Toast.makeText(Start.this,errorMsg,Toast.LENGTH_LONG).show();
@@ -123,27 +123,27 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 ### ÖRNEK KULLANIM - PAYMENT (ÖDEME)
 
                   BEXStarter.startSDKForPayment(Payment.this,Environment.PREPROD, "MERCHANT-TOKEN", new BEXPaymentListener() {
-                                 
+
                                  @Override
                                  public void onSuccess() {
                                      Toast.makeText(Payment.this, "Ödeme Başarılı !!", Toast.LENGTH_SHORT).show();
                                  }
-                  
+
                                  @Override
                                  public void onCancelled() {
                                      Toast.makeText(Payment.this, "Kullanıcı ödemeyi iptal etti !!", Toast.LENGTH_SHORT).show();
                                  }
-                  
+
                                  @Override
                                   public void onFailure(int errorId, String errorMsg) {
                                      Toast.makeText(Payment.this, "Hata :: " + errorMsg + " !!", Toast.LENGTH_SHORT).show();
                                   }
                   });
-                  
+
 ## PROGUARD AYARLARI
 
  Eğer uygulamanızın release versiyonunu proguard ile koruyorsanız, lütfen aşağıdaki satırı proguard-rules dosyanıza ekleyiniz.
-                      
+
                       -keep class com.bkm.** { *; }
 ## ORTAMLAR
 
@@ -156,7 +156,3 @@ BKM Express Android SDK paketi üç farklı ortamda çalışmaktadır. (Ortam de
 **Her ortam için kullanıcı adı ve şifre aynıdır.**
 
 **NOT:** Entegrasyon sırasında işyerlerine verilen kullanıcı adı ve şifrenin sorumluluğu, **işyerine** aittir.
-
-
-
-
