@@ -43,7 +43,7 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
 * AndroidX desteği olan uygulamalar için;
 
-        implementation 'com.bkm:bexandroidsdk:2.1.4'
+        implementation 'com.bkm:bexandroidsdk:2.1.5'
 
 * AndroidX desteği BULUNMAYAN uygulamalar için;
 
@@ -58,8 +58,9 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 ### BEXStarter
 
                 public static void startSDKForSubmitConsumer(Context context, Environment environment, String token, BEXSubmitConsumerListener listener);
-                public static void startSDKForPayment(Context context, Environment environment, String token,BEXPaymentListener paymentListener);
-                public static void startSDKForReSubmitConsumer(Context context,Environment environment,String ticketId,BEXSubmitConsumerListener listener);
+                public static void startSDKForPayment(Context context, Environment environment, String token, BEXPaymentListener paymentListener);
+                public static void startSDKForReSubmitConsumer(Context context, Environment environment, String ticketId, BEXSubmitConsumerListener listener);
+                public static void startSDKForOtpPayment(Context context, Environment environment, String ticket, BEXOtpPaymentListener listener);
 
 ### BEXSubmitConsumerListener
 
@@ -72,6 +73,12 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
                  public void onSuccess(PosResult posResult); //BAŞARILI ÖDEME İŞLEMİ - PosResult objesi pos cevabını taşımaktadır.
                  public void onCancelled(); //KULLANICI ÖDEME İŞLEMİNİ İPTAL ETTİ
                  public void onFailure(int errorId,String errorMsg); //ÖDEME İŞLEMİ VERİLEN HATA YÜZÜNDEN İPTAL EDİLDİ
+
+### BEXOtpPaymentListener
+
+                 public void onSuccess(); //BAŞARILI ÖDEME İŞLEMİ
+                 public void onCancelled(); //KULLANICI ÖDEME İŞLEMİNİ İPTAL ETTİ
+                 public void onFailure(int errorId, String errorMsg); //ÖDEME İŞLEMİ VERİLEN HATA YÜZÜNDEN İPTAL EDİLDİ
 
 
 
@@ -100,29 +107,29 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
 * Diğer işlemlerden farklı olarak, ReSubmitConsumer operasyonu <u>daha önceden kart eklemiş</u> kullanıcının tekrardan sisteme giriş yapmadan kart değiştirmesine olanak sağlamaktadır. Bahsi geçen Ticket, BEX Core servisleri tarafından sağlanmaktadır.
 
-                    BEXStarter.startSDKForReSubmitConsumer(Start.this, Environment.TEST, ticket, new BEXSubmitConsumerListener() {
+                BEXStarter.startSDKForReSubmitConsumer(Start.this, Environment.TEST, ticket, new BEXSubmitConsumerListener() {
 
-                                @Override
-                                public void onSuccess(String first6,String last2) {
-                                    Toast.makeText(Start.this,"Consumer resubmitted !!!\nFirst6 :: "+first6+"\nLast2 :: "+last2,Toast.LENGTH_LONG).show();
-                                }
+                            @Override
+                            public void onSuccess(String first6,String last2) {
+                                Toast.makeText(Start.this,"Consumer resubmitted !!!\nFirst6 :: "+first6+"\nLast2 :: "+last2,Toast.LENGTH_LONG).show();
+                            }
 
-                                @Override
-                                public void onCancelled() {
-                                    Toast.makeText(Start.this,"cancelled!!!",Toast.LENGTH_LONG).show();
-                                }
+                            @Override
+                            public void onCancelled() {
+                                Toast.makeText(Start.this,"cancelled!!!",Toast.LENGTH_LONG).show();
+                            }
 
-                                @Override
-                                public void onFailure(int errorId, String errorMsg) {
-                                    Toast.makeText(Start.this,errorMsg,Toast.LENGTH_LONG).show();
-                                }
-                            });
+                            @Override
+                            public void onFailure(int errorId, String errorMsg) {
+                                Toast.makeText(Start.this,errorMsg,Toast.LENGTH_LONG).show();
+                            }
+                        });
 
 
 
 ### ÖRNEK KULLANIM - PAYMENT (ÖDEME)
 
-                  BEXStarter.startSDKForPayment(Payment.this,Environment.PREPROD, "MERCHANT-TOKEN", new BEXPaymentListener() {
+                  BEXStarter.startSDKForPayment(Payment.this, Environment.PREPROD, "MERCHANT-TOKEN", new BEXPaymentListener() {
 
                                  @Override
                                  public void onSuccess() {
@@ -139,6 +146,26 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
                                      Toast.makeText(Payment.this, "Hata :: " + errorMsg + " !!", Toast.LENGTH_SHORT).show();
                                   }
                   });
+
+### ÖRNEK KULLANIM - OTP PAYMENT (OTP'Lİ HIZLI ÖDEME DOĞRULAMA)
+                  
+                  BEXStarter.startSDKForOtpPayment(Payment.this, Environment.PREPROD, "MERCHANT-TICKET", new BEXPaymentListener() {
+                                  
+                                  @Override
+                                  public void onSuccess() {
+                                      Toast.makeText(Payment.this, "Ödeme Başarılı !!", Toast.LENGTH_SHORT).show();
+                                  }
+                      
+                                  @Override
+                                  public void onCancelled() {
+                                      Toast.makeText(Payment.this, "Kullanıcı ödemeyi iptal etti !!", Toast.LENGTH_SHORT).show();
+                                  }
+                      
+                                  @Override
+                                  public void onFailure(int errorId, String errorMsg) {
+                                      Toast.makeText(Payment.this, "Hata :: " + errorMsg + " !!", Toast.LENGTH_SHORT).show();
+                                  }
+                          });
 
 ## PROGUARD AYARLARI
 
