@@ -149,7 +149,7 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
 ### ÖRNEK KULLANIM - OTP PAYMENT (OTP'Lİ HIZLI ÖDEME DOĞRULAMA)
                   
-                  BEXStarter.startSDKForOtpPayment(Payment.this, Environment.PREPROD, "MERCHANT-TICKET", new BEXPaymentListener() {
+                  BEXStarter.startSDKForOtpPayment(Payment.this, Environment.PREPROD, "MERCHANT-TICKET", new BEXOtpPaymentListener() {
                                   
                                   @Override
                                   public void onSuccess() {
