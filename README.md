@@ -29,7 +29,7 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
                 allprojects {
                     repositories {
-                        jcenter()
+                        mavenCentral()
                         maven {
                             url = properties.getProperty("bkm_maven_url")
                             credentials {
@@ -43,7 +43,7 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
 * AndroidX desteği olan uygulamalar için;
 
-        implementation 'com.bkm:bexandroidsdk:2.1.5'
+        implementation 'com.bkm:bexandroidsdk:2.1.6'
 
 * AndroidX desteği BULUNMAYAN uygulamalar için;
 

@@ -1,17 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.getkeepsafe.dexcount'
 
-def RETROFIT_VERSION = '2.1.0'
-def SUPPORT_VERSION = "27.1.1"
-
-
 repositories{
-    jcenter()
     maven {
         url 'https://maven.google.com'
     }
     mavenCentral()
 }
+
 dexcount {
     format = "list"
     includeClasses = false
@@ -23,7 +19,6 @@ dexcount {
     teamCityIntegration = false
     enableForInstantRun = false
 }
-
 
 android {
 
@@ -52,9 +47,6 @@ android {
         }
     }
 
-
-    
-
     buildTypes {
         debug {
             minifyEnabled false
@@ -69,6 +61,11 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -76,6 +73,5 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.bkm:bexandroidsdk:2.1.5'
-
+    implementation 'com.bkm:bexandroidsdk:2.1.6'
 }
