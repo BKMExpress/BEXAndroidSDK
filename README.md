@@ -19,7 +19,7 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
                 bkm_username=<<YOUR_USERNAME>>
                 bkm_password=<<YOUR_PASSWORD>>
-                bkm_maven_url = http://54.174.1.67/artifactory/bexandroidsdk-release-android
+                bkm_maven_url = http://18.208.172.191/artifactory/bexandroidsdk-release-android
 
 * SDK paketini gradle dependency ile eklemek için, <u>projenizin</u> build.gradle dosyasındaki repositories kısmına aşağıdaki kod bloğunu ekleyiniz.
 
