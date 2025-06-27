@@ -43,7 +43,7 @@ BKM Express Android SDK paketinin entegre edeceğiniz uygulamaya görünür olma
 
 * AndroidX desteği olan uygulamalar için;
 
-        implementation 'com.bkm:bexandroidsdk:2.1.7'
+        implementation 'com.bkm:bexandroidsdk:2.1.9'
 
 * AndroidX desteği BULUNMAYAN uygulamalar için;
 
